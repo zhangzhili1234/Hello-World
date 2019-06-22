@@ -1,6 +1,8 @@
 package com.zzl.goods.service;
 
-import com.zzl.goods.entity.form.PrivilegeUrlForm;
+import com.zzl.common.utils.PageForm;
+
+import java.util.Map;
 
 /**
  * @Desc: TODO
@@ -9,5 +11,5 @@ import com.zzl.goods.entity.form.PrivilegeUrlForm;
  */
 public interface UrlPrivilegeService {
 
-    public PrivilegeUrlForm queryByUrl(String url);
+    Map<String, Object> queryList(PageForm form);
 }

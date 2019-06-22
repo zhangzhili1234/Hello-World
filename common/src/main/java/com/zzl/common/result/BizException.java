@@ -1,4 +1,4 @@
-package com.zzl.common.response;
+package com.zzl.common.result;
 
 /**
  * @desc: 自定义异常：运行时主动抛异常
@@ -31,10 +31,6 @@ public class BizException extends RuntimeException {
 
     public Integer getCode() {
         return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.zzl.common.response;
+package com.zzl.common.result;
 
 /**
  * @desc: 返回枚举封装接口

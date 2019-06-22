@@ -1,4 +1,4 @@
-package com.zzl.common.response;
+package com.zzl.common.result;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
@@ -17,18 +17,18 @@ import java.util.List;
  */
 @Slf4j
 @ControllerAdvice
-public class ExceptionCatch extends BaseRest {
+public class ExceptionCatch {
 
     /**
      * 全局异常捕捉处理
-     * @param e
-     * @return
+     * @param e 异常
+     * @return Result
      */
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Result errorHandler(Exception e) {
 
-        // 参数校验不通过报异常
+        // JSON参数校验不通过报异常
         if (e instanceof MethodArgumentNotValidException) {
             log.error("MethodArgumentNotValidException happened...", e);
             BindingResult result = ((MethodArgumentNotValidException) e).getBindingResult();
@@ -40,20 +40,20 @@ public class ExceptionCatch extends BaseRest {
                     sb.append(fieldError.getDefaultMessage()).append("; ");
                 }
                 log.warn(sb.toString());
-                return new Result(407, errors.get(0).getDefaultMessage());
+                return Result.fail(407, errors.get(0).getDefaultMessage());
             }
-            return this.fail();
+            return Result.fail();
         }
 
-        // 运行时主动抛异常
+        // 运行时主动抛自定义异常
         if (e instanceof BizException) {
             BizException ex = (BizException) e;
             log.error("BizException happened..." + ex.toString());
-            return new Result(ex.getCode(), ex.getMessage());
+            return Result.fail(ex.getCode(), ex.getMessage());
         }
 
         // 其他异常
         log.error("Exception happened...", e);
-        return this.fail();
+        return Result.fail();
     }
 }

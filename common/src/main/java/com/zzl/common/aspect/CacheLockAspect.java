@@ -27,7 +27,7 @@ public class CacheLockAspect {
     @Resource
     private RedisUtil redisUtil;
 
-    @Around("execution(**.*(..)) && @annotation(com.zzl.common.annotation.CacheLock)")
+    @Around("execution(* *.*(..)) && @annotation(com.zzl.common.annotation.CacheLock)")
     public void cacheLockPoint(ProceedingJoinPoint point) {
         Method cacheMethod = null;
         for (Method method : point.getTarget().getClass().getMethods()) {

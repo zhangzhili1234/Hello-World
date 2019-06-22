@@ -1,4 +1,4 @@
-package com.zzl.common.response;
+package com.zzl.common.result;
 
 /**
  * @desc: 常用返回状态枚举
