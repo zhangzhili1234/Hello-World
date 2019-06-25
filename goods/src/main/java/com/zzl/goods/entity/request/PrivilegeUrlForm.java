@@ -1,4 +1,4 @@
-package com.zzl.goods.entity.form;
+package com.zzl.goods.entity.request;
 
 import lombok.Getter;
 import lombok.Setter;

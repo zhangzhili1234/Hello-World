@@ -63,12 +63,16 @@ public class Result implements Serializable {
         return new Result(resultCode, data);
     }
 
+    public static Result success(Integer code, String message, Object data){
+        return new Result(code, message, data);
+    }
+
     public static Result fail(){
         return new Result(ResultStatus.EXCEPTION_ERROR);
     }
 
-    public static Result fail(Integer code, String msg){
-        return new Result(code, msg);
+    public static Result fail(Integer code, String message){
+        return new Result(code, message);
     }
 
     public static Result fail(ResultCode resultCode){
