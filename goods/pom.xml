@@ -7,8 +7,11 @@
         <artifactId>mall</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <artifactId>goods</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <name>goods</name>
     <description>Demo project for Spring Boot</description>
 
