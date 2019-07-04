@@ -2,7 +2,7 @@ package com.zzl.goods.rest;
 
 import com.zzl.common.result.Result;
 import com.zzl.common.utils.PageForm;
-import com.zzl.goods.service.UrlPrivilegeService;
+import com.zzl.goods.service.UrlService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,15 +19,15 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-public class UrlPrivilegeRest {
+public class UrlRest {
 
     @Resource
-    private UrlPrivilegeService urlPrivilegeService;
+    private UrlService urlService;
 
     @PostMapping("/queryList")
     public Result queryList(@RequestBody @Valid PageForm form) {
         log.info("UrlPrivilegeRest queryList start...params:{}", form);
-        Map<String, Object> returnMap = urlPrivilegeService.queryList(form);
+        Map<String, Object> returnMap = urlService.queryList(form);
         log.info("UrlPrivilegeRest queryList end...");
         return Result.success(returnMap);
     }
