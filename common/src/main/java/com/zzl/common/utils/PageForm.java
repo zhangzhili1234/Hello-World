@@ -2,7 +2,6 @@ package com.zzl.common.utils;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -22,6 +21,14 @@ public class PageForm implements Serializable{
 
     @NotNull(message = "当前页数不能为空")
     private Integer current;
+
+    public PageForm() {
+    }
+
+    public PageForm(Integer size, Integer current) {
+        this.size = size;
+        this.current = current;
+    }
 
     @Override
     public String toString() {

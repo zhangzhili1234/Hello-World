@@ -6,7 +6,8 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /** 
  * @Desc: 编写一个WebSocketConfig配置类
- * 注入对象ServerEndpointExporter，这个bean会自动注册使用了@ServerEndpoint注解声明的Websocket endpoint
+ *          注入对象ServerEndpointExporter
+ *          这个bean会自动注册使用了@ServerEndpoint注解声明的Websocket endpoint
  */
 @Configuration
 public class WebSocketConfig {

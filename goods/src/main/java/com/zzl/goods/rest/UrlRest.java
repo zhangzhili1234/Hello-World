@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.Map;
@@ -25,10 +24,11 @@ public class UrlRest {
     private UrlService urlService;
 
     @PostMapping("/queryList")
-    public Result queryList(@RequestBody @Valid PageForm form) {
+    public Result queryList(@RequestBody @Valid PageForm form) throws InterruptedException {
         log.info("UrlPrivilegeRest queryList start...params:{}", form);
         Map<String, Object> returnMap = urlService.queryList(form);
         log.info("UrlPrivilegeRest queryList end...");
+//        Thread.sleep(3000);
         return Result.success(returnMap);
     }
 }

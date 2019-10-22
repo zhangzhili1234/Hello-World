@@ -1,5 +1,6 @@
 package com.zzl.goods.entity.dto;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +45,7 @@ public class UrlDTO implements Serializable {
 	private String updatedBy;
 
 	/** 更新时间 */
+	@TableField
 	private Integer updatedDate;
 
 }

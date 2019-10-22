@@ -23,6 +23,9 @@ public class Result implements Serializable {
     /** 返回数据 */
     private Object data;
 
+    public Result() {
+    }
+
     private Result(Object data) {
         this.code = ResultStatus.SUCCESS.getCode();
         this.message = ResultStatus.SUCCESS.getMessage();

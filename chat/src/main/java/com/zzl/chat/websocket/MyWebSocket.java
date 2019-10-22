@@ -1,15 +1,16 @@
 package com.zzl.chat.websocket;
 
 import org.springframework.stereotype.Component;
+
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @Desc: websocket的具体实现类
- * 使用springboot的唯一区别是要@Component声明下，而使用独立容器是由容器自己管理websocket的， 
- * 但在springboot中连容器都是spring管理的。  
- * 虽然@Component默认是单例模式的，但springboot还是会为每个websocket连接初始化一个bean，所以可以用一个静态set保存起来。 
+ * 使用springboot的唯一区别是要@Component声明下，而使用独立容器是由容器自己管理websocket的
+ * 但在springboot中连容器都是spring管理的
+ * 虽然@Component默认是单例模式的，但springboot还是会为每个websocket连接初始化一个bean，所以可以用一个静态set保存起来
  */
 @ServerEndpoint(value = "/websocket")
 @Component
@@ -17,8 +18,8 @@ public class MyWebSocket {
     
     //用来存放每个客户端对应的MyWebSocket对象。 
     private static CopyOnWriteArraySet<MyWebSocket> webSocketSet = new CopyOnWriteArraySet<>();
-    
-    //与某个客户端的连接会话，需要通过它来给客户端发送数据 
+
+    //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
 
     /**
@@ -28,7 +29,7 @@ public class MyWebSocket {
     public void onOpen(Session session) {
         this.session = session;
         webSocketSet.add(this);
-        //加入set中 
+        //加入set中
         System.out.println("有新连接加入！当前在线人数为" + webSocketSet.size());
         this.session.getAsyncRemote().sendText("恭喜您成功连接上WebSocket-->当前在线人数为：" + webSocketSet.size());
     }
